@@ -6,7 +6,6 @@ function Game (container) {
     self.container = container;
     self.gameScreenElement = null;
     self.ball = null;
-    self.player = null;
   };
 
 Game.prototype.build = function() {
@@ -26,7 +25,8 @@ Game.prototype.start = function() {
     var self = this;
 
     self.ball = new Ball();
-    self.player = new Player;
+    self.player1 = new Player(10);
+    self.player2 = new Player(490);
 
     self.frame();
 }
@@ -37,16 +37,18 @@ Game.prototype.frame = function () {
     self.ball.update();
 // @todo check if off limits left/right and reset position
 
-    self.player.update();
+    self.player1.update();
+    self.player2.update();
    
   
 
     self.ctx.clearRect(0, 0, 500, 500);
 
     self.ball.draw(self.ctx);
-    self.player.draw(self.ctx);
-    
+    self.player1.draw(self.ctx);
+    self.player2.draw(self.ctx);
 
+    
     window.requestAnimationFrame(function () {
       self.frame();
   });

@@ -1,18 +1,18 @@
 'use strict';
 
-function Player () {
+function Player (x) {
     var self = this;
     
     self.position = {
-        x: self.position.x,
-        y: self.position.y,
+        x: x,
+        y: 200
     }
     self.direction = {
-        x: self.direction.x,
-        y: self.direction.y,
+        x: 0,
+        y: 0
     }
-    self.height = self.height,
-    self.width = self.width
+    self.height = 100;
+    self.width = 10;
 
     self.upPressed = false;
     self.downPressed = false;
@@ -57,10 +57,10 @@ Player.prototype.draw = function(canvasContext) {
     var self = this;
     
     canvasContext.fillStyle = 'red';
-    canvasContext.fillRect(self.position.x,self.position.5,30)
-    ctx.fill()
+    canvasContext.fillRect(self.position.x,self.position.y,self.width,self.height)
+    canvasContext.fill()
 
-};
+}
 
   
 // Don't think is neccesary creating a prototype since there is 
@@ -71,4 +71,4 @@ Player.prototype.draw = function(canvasContext) {
     
 
 
-}
+
