@@ -1,0 +1,11 @@
+function Ball () {
+    this.position = [x,y];
+    this.direction = function (x,y) {/* .. */};
+}
+
+Ball.prototype.update = function();
+
+Ball.prototype.draw = function();
+
+Ball.prototype.delete = function();
+
