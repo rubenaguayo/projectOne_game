@@ -21,8 +21,7 @@ Ball.prototype.update = function() {
 
   if ((self.position.y === 0) || (self.position.y === 500)) {
     return self.direction.y *= -1;
-  }
-  
+  } 
     
 
   // @todo check if off limits up/down and bounce 

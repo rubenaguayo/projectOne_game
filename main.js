@@ -23,8 +23,8 @@ function main() {
   function buildTitleScreen() {
     titleScreenElement = createHtml(`
       <div class="title-screen">
-        <h1>Hello World</h1>
-        <button>start game</button>
+        <h1>IRON CHAMPIONG</h1>
+        <button>game on</button>
       </div>
     `);
     
