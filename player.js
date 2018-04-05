@@ -1,6 +1,6 @@
 'use strict';
 
-function Player (x) {
+function Player (x, keyCodeUp, keyCodeDown) {
     var self = this;
     
     self.position = {
@@ -17,46 +17,52 @@ function Player (x) {
     self.upPressed = false;
     self.downPressed = false;
 
-    self.keyDownHandler = function(event) {
-        if(event.keyCode === 38) {
+    self.keyPressedHandler = function(event) {
+
+        if (event.keyCode === keyCodeUp) {
             self.upPressed = true;
-        } else if(event.keyCode === 40) {
+        } else if (event.keyCode === keyCodeDown) {
             self.downPressed = true;
         }
     }
 
-    self.keyUpHandler = function(event) {
-        if(event.keyCode === 38) {
+    self.keyReleasedHandler = function(event) {
+
+        if (event.keyCode === keyCodeUp) {
             self.upPressed = false;
-        } else if(event.keyCode === 40) {
+        } else if(event.keyCode === keyCodeDown) {
             self.downPressed = false;
         }
+
     }    
     
-    document.addEventListener('keydown', self.keyDownHandler, false);
-    document.addEventListener('keyup', self.keyUpHandler, false);
+    document.addEventListener('keydown', self.keyPressedHandler, false);
+    document.addEventListener('keyup', self.keyReleasedHandler, false);
 };
 
 
 Player.prototype.update = function() {
     var self = this;
   
-    if(self.upPressed === true) {
-    if(self.position.y >= 0) {
-    return self.position.y--;
-    } else return self.position.y++;
-            
-    } else if(self.downPressed === true) {
-    if(self.position.y < 430) {
-    return self.position.y++;
-    } else return self.position.y--;
+    if (self.upPressed === true) {
+        if(self.position.y >= 0) {
+            return self.position.y--;
+        } else {
+            return self.position.y++;
+        }         
+    } else if (self.downPressed === true) {
+        if (self.position.y < 400) {
+            return self.position.y++;
+        } else {
+            return self.position.y--;
+        }
     }
 }
 
 Player.prototype.draw = function(canvasContext) {
     var self = this;
     
-    canvasContext.fillStyle = 'red';
+    canvasContext.fillStyle = 'green';
     canvasContext.fillRect(self.position.x,self.position.y,self.width,self.height)
     canvasContext.fill()
 
